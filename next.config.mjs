@@ -4,9 +4,15 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "source.unsplash.com",
+        hostname: "textpro.me",
         port: "",
-        pathname: "/random/**",
+        pathname: "**",
+      },
+      {
+        protocol: "https",
+        hostname: "*.yotools.net",
+        port: "",
+        pathname: "**",
       },
     ],
   },

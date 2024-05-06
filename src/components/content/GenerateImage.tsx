@@ -1,6 +1,6 @@
 import Image from "next/image";
-import Message from "../Message";
-import MessageForm from "../MessageForm";
+import Message from "@/components/Message";
+import MessageForm from "@/components/MessageForm";
 import { FormEvent, ReactNode } from "react";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";

@@ -8,17 +8,23 @@ type SidebarItemPropsTypes = {
   icon: IconDefinition;
   text: string;
   href: string;
+  active: boolean;
 };
 
 export default function SidebarItem({
   icon,
   text,
   href,
+  active,
 }: SidebarItemPropsTypes) {
   return (
     <Link
       href={href}
-      className="flex items-center gap-4 hover:text-primary-foreground hover:bg-primary py-2 px-4 rounded-lg cursor-pointer"
+      className={`flex items-center gap-4 py-2 px-4 mb-1 rounded-lg cursor-pointer transition-all duration-150 ${
+        active
+          ? "text-primary-foreground bg-primary"
+          : "hover:text-primary-foreground hover:bg-primary"
+      }`}
     >
       <FontAwesomeIcon icon={icon} width={20} height={20} />
       <span className="text-base">{text}</span>

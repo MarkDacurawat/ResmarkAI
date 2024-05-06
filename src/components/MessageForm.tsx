@@ -7,26 +7,36 @@ type MessageFormPropsTypes = {
   sendMessage: (message: string) => void;
   formRef: React.RefObject<HTMLFormElement>;
   handleSubmit: (event: FormEvent<HTMLFormElement>) => void;
+  inputWidth?: number;
+  max?: number;
 };
 
-export default function MessageForm({
-  sendMessage,
-  formRef,
-  handleSubmit,
-}: MessageFormPropsTypes) {
+export default function MessageForm(props: any) {
+  const {
+    sendMessage,
+    formRef,
+    handleSubmit,
+    inputWidth,
+    max,
+  }: MessageFormPropsTypes = props;
+
+  const width = inputWidth || 950;
   return (
     <form
       ref={formRef}
       onSubmit={handleSubmit}
       id="messageActions"
-      className="w-full p-4 bg-background flex items-center justify-center gap-[25px]"
+      className="w-full p-4 px-10 bg-background flex items-center justify-center gap-[25px]"
       autoComplete="off"
     >
+      {props.children}
       <Input
         type="text"
         name="message"
         placeholder="Type a message here..."
-        className="w-[950px] py-2 px-4 rounded-md"
+        className={`flex-1 py-2 px-4 rounded-md`}
+        maxLength={max || 1000}
+        required
       ></Input>
       <button type="submit" className="">
         <FontAwesomeIcon icon={faPaperPlane} className="text-primary" />

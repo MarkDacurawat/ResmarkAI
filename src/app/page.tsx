@@ -1,8 +1,9 @@
 "use client";
 import Image from "next/image";
 import Sidebar from "../components/sidebar/SideBar";
-import ChatBotContent from "../components/content/ChatBotContent";
-import GenerateImage from "../components/content/GenerateImage";
+import ChatBotContent from "@/components/content/ChatBotContent";
+import GenerateImage from "@/components/content/GenerateImage";
+import MumakerContent from "@/components/content/MumakerContent";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faMessage,
@@ -19,7 +20,6 @@ export default function Home() {
   // Define function to render content based on route
   const renderContent = () => {
     const tab = searchParams.get("tab");
-    console.log(tab);
     switch (tab) {
       case null:
         return <ChatBotContent />;
@@ -27,6 +27,8 @@ export default function Home() {
         return <ChatBotContent />;
       case "generate-image":
         return <GenerateImage />;
+      case "mumaker":
+        return <MumakerContent />;
       default:
         window.location.href = "/404";
         return null;
