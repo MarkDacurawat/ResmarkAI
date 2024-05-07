@@ -139,14 +139,6 @@ const photooxy = [
     url: "https://photooxy.com/logo-and-text-effects/text-under-flower-165.html",
   },
   {
-    theme: "battlefield",
-    url: "https://photooxy.com/fps-game-effect/create-battlefield-4-rising-effect-152.html",
-  },
-  {
-    theme: "pubg",
-    url: "https://photooxy.com/battlegrounds/make-wallpaper-battlegrounds-logo-text-146.html",
-  },
-  {
     theme: "naruto",
     url: "https://photooxy.com/manga-and-anime/make-naruto-banner-online-free-378.html",
   },
@@ -259,11 +251,27 @@ export default function GenerateImage() {
           <div className="flex gap-3 items-center justify-center">
             <Image src="/images/resmarkAI.png" alt="" width={80} height={80} />
             <h1 className="text-[30px] text-center">
-              Generate text with different <br />
-              fonts and attractive effects.
+              Generate text with different attractive effects.
             </h1>
           </div>
-          <div className="w-[620px] h-[160px] grid grid-row-2 grid-cols-2 place-items-center"></div>
+          <div className="w-full min-h-[100px] grid grid-cols-2 max-[640px]:grid-cols-1 place-items-center">
+            <Image
+              src="/images/mumaker/batman.png"
+              width={200}
+              height={200}
+              alt="batman"
+              draggable="false"
+              className="border"
+            />
+            <Image
+              src="/images/mumaker/sliced.png"
+              width={200}
+              height={200}
+              alt="sliced"
+              draggable="false"
+              className="border"
+            />
+          </div>
         </div>
       )}
 

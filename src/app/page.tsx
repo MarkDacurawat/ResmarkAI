@@ -37,8 +37,9 @@ export default function Home() {
 
   return (
     <main className="dark w-100 h-screen bg-background text-foreground flex flex-col justify-center items-center">
+      <Sidebar />
       <div className="chatBotContainer w-full h-full flex rounded-lg">
-        <Sidebar />
+        <div className="w-[250px] h-full max-[910px]:hidden"></div>
         <div className="flex-1 bg-pallete-yellow" id="content">
           {renderContent()}
         </div>

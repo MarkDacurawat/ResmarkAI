@@ -84,55 +84,44 @@ export default function GenerateImage() {
             <Image src="/images/resmarkAI.png" alt="" width={80} height={80} />
             <h1 className="text-[30px] text-center">Generate Image!</h1>
           </div>
-          <div className="w-[620px] h-[160px] grid grid-row-2 grid-cols-2 place-items-center">
+          <div className="w-full min-h-[100px] grid grid-cols-2 max-[640px]:grid-cols-1 place-items-center px-8 gap-3">
             <div
-              className="w-[300px] h-[70px] bg-primary rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 generateImage(
                   "The majestic pyramids of Giza standing tall in the desert."
                 )
               }
             >
-              <p>
-                The majestic pyramids <br /> of Giza standing tall in the
-                desert.
-              </p>
+              <p>The majestic pyramids of Giza standing tall in the desert.</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 generateImage(
                   "Impressionist landscape of a Japanese garden in autumn"
                 )
               }
             >
-              <p>
-                Impressionist landscape <br /> of a Japanese garden in autumn
-              </p>
+              <p>Impressionist landscape of a Japanese garden in autumn</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 generateImage(
                   "Black and white street photography of a rainy night in New York"
                 )
               }
             >
-              <p>
-                Black and white street photography <br /> of a rainy night in
-                New York
-              </p>
+              <p>Black and white street photography of a rainy night</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 generateImage("Food photography of a gourmet meal")
               }
             >
-              <p>
-                Food photography <br />
-                of a gourmet meal
-              </p>
+              <p>Food photography of a gourmet meal</p>
             </div>
           </div>
         </div>

@@ -26,7 +26,7 @@ export default function MessageForm(props: any) {
       ref={formRef}
       onSubmit={handleSubmit}
       id="messageActions"
-      className="w-full p-4 px-10 bg-background flex items-center justify-center gap-[25px]"
+      className="w-full py-4 px-10 max-[640px]:px-5 bg-background flex items-center justify-center gap-[25px]"
       autoComplete="off"
     >
       {props.children}

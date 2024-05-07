@@ -95,46 +95,38 @@ export default function ChatBotContent() {
             <Image src="/images/resmarkAI.png" alt="" width={80} height={80} />
             <h1 className="text-[30px] text-center">Chat with me!</h1>
           </div>
-          <div className="w-[620px] h-[160px] grid grid-row-2 grid-cols-2 place-items-center">
+          <div className="w-full min-h-[100px] grid grid-cols-2 max-[640px]:grid-cols-1 place-items-center px-8 gap-3">
             <div
-              className="w-[300px] h-[70px] bg-primary text-primary-foreground rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 sendMessage("Test my knowledge on ancient civilization")
               }
             >
-              <p>
-                Test my knowledge <br /> on ancient civilization
-              </p>
+              <p>Test my knowledge on ancient civilization</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary text-primary-foreground rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 sendMessage("Give me ideas for what to do in my kids art")
               }
             >
-              <p>
-                Give me ideas <br /> for what to do in my kids art
-              </p>
+              <p>Give me ideas for what to do in my kids art</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary text-primary-foreground rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 sendMessage("Write a thankyou note to my interviewer")
               }
             >
-              <p>
-                Write a thankyou note <br /> to my interviewer
-              </p>
+              <p>Write a thankyou note to my interviewer</p>
             </div>
             <div
-              className="w-[300px] h-[70px] bg-primary text-primary-foreground rounded-lg cursor-pointer p-3"
+              className="w-full bg-primary text-primary-foreground rounded-lg cursor-pointer px-5 py-3"
               onClick={(e) =>
                 sendMessage(" Tell me a fun fact about the Roman Empire")
               }
             >
-              <p>
-                Tell me a fun fact <br /> about the Roman Empire
-              </p>
+              <p>Tell me a fun fact about the Roman Empire</p>
             </div>
           </div>
         </div>
