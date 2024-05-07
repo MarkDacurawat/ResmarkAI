@@ -249,7 +249,12 @@ export default function GenerateImage() {
           id="suggestionsForChatBot"
         >
           <div className="flex gap-3 items-center justify-center">
-            <Image src="/images/resmarkAI.png" alt="" width={80} height={80} />
+            <Image
+              src="/images/resmarkAIDark.png"
+              alt=""
+              width={80}
+              height={80}
+            />
             <h1 className="text-[30px] text-center">
               Generate text with different attractive effects.
             </h1>

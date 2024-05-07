@@ -35,7 +35,12 @@ export default function Sidebar() {
       className={`w-[250px] h-screen fixed left-0  max-[910px]:left-[${sidebarLeft}px] bg-secondary text-secondary-foreground flex flex-col items-center justify-between transition-all duration-500`}
     >
       <div className="mt-10">
-        <Image src="/images/resmarkAI.png" alt="" width={150} height={150} />
+        <Image
+          src="/images/resmarkAIDark.png"
+          alt=""
+          width={150}
+          height={150}
+        />
         <ul className="mt-8">
           <SidebarItem
             icon={faComment}

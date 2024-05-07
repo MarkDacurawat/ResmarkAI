@@ -81,7 +81,12 @@ export default function GenerateImage() {
           id="suggestionsForChatBot"
         >
           <div className="flex gap-3 items-center justify-center">
-            <Image src="/images/resmarkAI.png" alt="" width={80} height={80} />
+            <Image
+              src="/images/resmarkAIDark.png"
+              alt=""
+              width={80}
+              height={80}
+            />
             <h1 className="text-[30px] text-center">Generate Image!</h1>
           </div>
           <div className="w-full min-h-[100px] grid grid-cols-2 max-[640px]:grid-cols-1 place-items-center px-8 gap-3">
