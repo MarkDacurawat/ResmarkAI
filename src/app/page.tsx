@@ -12,28 +12,33 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FormEvent, useState, useRef, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import axios from "axios";
 
-export default function Home() {
+export const RenderContent = () => {
   const searchParams = useSearchParams();
+  const tab = searchParams.get("tab");
+  if (tab !== "chatbot" && tab !== "generate-image" && tab !== "mumaker") {
+    return (
+      <div className="w-full h-full flex flex-col items-center justify-center">
+        <h1 className="text-xl text-foreground">404 not found</h1>
+      </div>
+    );
+  }
+  switch (tab) {
+    case null:
+      return <ChatBotContent />;
+    case "chatbot":
+      return <ChatBotContent />;
+    case "generate-image":
+      return <GenerateImage />;
+    case "mumaker":
+      return <MumakerContent />;
+  }
+};
 
+export default function Home() {
   // Define function to render content based on route
-  const renderContent = () => {
-    const tab = searchParams.get("tab");
-    switch (tab) {
-      case null:
-        return <ChatBotContent />;
-      case "chatbot":
-        return <ChatBotContent />;
-      case "generate-image":
-        return <GenerateImage />;
-      case "mumaker":
-        return <MumakerContent />;
-      default:
-        window.location.href = "/404";
-        return null;
-    }
-  };
 
   return (
     <main className="dark w-100 h-screen bg-background text-foreground flex flex-col justify-center items-center">
@@ -41,7 +46,9 @@ export default function Home() {
       <div className="chatBotContainer w-full h-full flex rounded-lg">
         <div className="w-[250px] h-full max-[910px]:hidden"></div>
         <div className="flex-1 bg-pallete-yellow" id="content">
-          {renderContent()}
+          <Suspense>
+            <RenderContent />
+          </Suspense>
         </div>
       </div>
 
