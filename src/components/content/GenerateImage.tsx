@@ -34,7 +34,7 @@ export default function GenerateImage() {
     setIsLoading(true);
 
     const response = await axios.post(
-      "/api/ai/gpti/generate-image",
+      "/api/ai/gpti/dalle",
       {
         message,
       },
