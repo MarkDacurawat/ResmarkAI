@@ -9,30 +9,53 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import SidebarItem from "./SidebarItem";
 import { useSearchParams } from "next/navigation";
-import { FormEvent, useEffect, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
+
+const ShowHideButton: React.FC<{
+  isSideBarOpen: boolean;
+  toggleSideBar: () => void;
+}> = ({ isSideBarOpen, toggleSideBar }) => {
+  return (
+    <FontAwesomeIcon
+      icon={isSideBarOpen ? faCaretLeft : faCaretRight}
+      className="text-[50px] cursor-pointer absolute right-[-40px] top-1/2"
+      onClick={toggleSideBar}
+    />
+  );
+};
 
 export default function Sidebar() {
   const searchParams = useSearchParams();
   const tab = searchParams.get("tab");
 
-  const [isSideBarOpen, setIsSideBarOpen] = useState(false);
+  const [isSideBarOpen, setIsSideBarOpen] = useState(true);
   const [sidebarLeft, setSidebarLeft] = useState(0);
 
-  const toggleSideBar = (event: FormEvent) => {
-    event.preventDefault();
+  useEffect(() => {
+    // Close sidebar when screen width is a maximum of 950px
+    const handleResize = () => {
+      if (window.innerWidth <= 950) {
+        setIsSideBarOpen(false);
+        setSidebarLeft(-250);
+      } else {
+        setIsSideBarOpen(true);
+        setSidebarLeft(0);
+      }
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const toggleSideBar = () => {
     setIsSideBarOpen(!isSideBarOpen);
+    setSidebarLeft(isSideBarOpen ? -250 : 0);
   };
 
-  useEffect(() => {
-    if (isSideBarOpen) {
-      setSidebarLeft(0);
-    } else {
-      setSidebarLeft(-250);
-    }
-  }, [isSideBarOpen]);
   return (
     <div
-      className={`w-[250px] h-screen fixed left-0  max-[910px]:left-[${sidebarLeft}px] bg-secondary text-secondary-foreground flex flex-col items-center justify-between transition-all duration-500`}
+      className={`w-[250px] h-screen fixed left-0 transition-all duration-500 bg-secondary text-secondary-foreground flex flex-col items-center justify-between`}
+      style={{ left: `${sidebarLeft}px` }}
     >
       <div className="mt-10">
         <Image
@@ -46,30 +69,31 @@ export default function Sidebar() {
             icon={faComment}
             text="ChatBot"
             href="?tab=chatbot"
-            active={!tab || tab == "chatbot"}
+            active={!tab || tab === "chatbot"}
           />
           <SidebarItem
             icon={faImage}
             text="Generate Image"
             href="?tab=generate-image"
-            active={tab == "generate-image"}
+            active={tab === "generate-image"}
           />
           <SidebarItem
             icon={faPenToSquare}
             text="Mumaker"
             href="?tab=mumaker"
-            active={tab == "mumaker"}
+            active={tab === "mumaker"}
           />
         </ul>
       </div>
       <div className="mb-8 text-gray-400">
         <p>© 2024 ResmarkAI</p>
       </div>
-      <FontAwesomeIcon
-        icon={isSideBarOpen ? faCaretLeft : faCaretRight}
-        className="min-[910px]:hidden text-[50px] cursor-pointer absolute right-[-40px] top-1/2"
-        onClick={toggleSideBar}
-      />
+      <Suspense fallback={<div>Loading...</div>}>
+        <ShowHideButton
+          isSideBarOpen={isSideBarOpen}
+          toggleSideBar={toggleSideBar}
+        />
+      </Suspense>
     </div>
   );
 }
